@@ -15,13 +15,15 @@ Image Docker d'outils pour MongoDB
 
 ::
 
-    $ docker run -it --rm srault95/mongo-tools bash
+    # requis: un serveur mongodb lancé dans un docker avec un name: "mongodb"
+
+    $ docker run -it --rm --link mongodb:mongodb srault95/mongo-tools bash
     
     $ index-stats -H mongodb -d mydb 
     
     # Ou directement:
     
-    $ docker run -it --rm srault95/mongo-tools index-stats -H mongodb -d mydb
+    $ docker run -it --rm --link mongodb:mongodb srault95/mongo-tools index-stats -H mongodb -d mydb
     
 
 **mtools:**
@@ -65,7 +67,7 @@ Image Docker d'outils pour MongoDB
 ::
 
     # Ouverture d'un shell bash avec un lien vers votre serveur mongodb sous docker 
-    docker run -it --rm ---link mongodb:mongodb srault95/mongo-tools bash
+    docker run -it --rm --link mongodb:mongodb srault95/mongo-tools bash
     
     # Active le profiling en level 1
     $ mongotail mongodb/widukind -l 1
